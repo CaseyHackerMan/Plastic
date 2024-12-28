@@ -35,3 +35,15 @@ def fade_out_lin(arr, dur):
 
 def s_saww(freq, dur):
     return s_saw(freq, dur)*s_sine(50, dur)
+
+
+def kick(dur):
+    # 808-style kick with frequency drop
+    t = np.linspace(0, d2s(dur), d2s(dur))
+    freq = 150 * np.exp(-12 * t / d2s(dur))
+    return fade_out_lin(s_sine(freq, dur), dur) * 1.5
+
+
+def hihat(dur):
+    # Filtered noise for hi-hat
+    return fade_out_lin(s_white(dur) * 0.3, 0.05)
