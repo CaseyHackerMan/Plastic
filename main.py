@@ -7,11 +7,13 @@ from library.utils import (
 )
 from library.constants import *
 from library.notes import note, rest
+from library.keys import get_keys
 
 import numpy as np
 
-a = note(A2, .5, s_saww)
-b = note(B2, .5, s_saww)
+a_minor = get_keys('Am', 4)
+a = note(a_minor[0], .5, s_saww)
+b = note(a_minor[1], .5, s_saww)
 
 rest = np.zeros(d2s(.5))
 x = np.concatenate((rest, a, a, a, a, a, a, rest, b, b, b, a, a, a, a, rest))
