@@ -43,6 +43,20 @@ A2 = A4 / 4
 A2_SHARP = BB2 = A4_SHARP / 4
 B2 = B4 / 4
 
+# Octave 1 (three octaves lower)
+C1 = C4 / 8
+C1_SHARP = DB1 = C4_SHARP / 8
+D1 = D4 / 8
+D1_SHARP = EB1 = D4_SHARP / 8
+E1 = E4 / 8
+F1 = F4 / 8
+F1_SHARP = GB1 = F4_SHARP / 8
+G1 = G4 / 8
+G1_SHARP = AB1 = G4_SHARP / 8
+A1 = A4 / 8
+A1_SHARP = BB1 = A4_SHARP / 8
+B1 = B4 / 8
+
 # Octave 5 (one octave higher)
 C5 = C4 * 2
 C5_SHARP = DB5 = C4_SHARP * 2
@@ -71,8 +85,30 @@ A6 = A4 * 4
 A6_SHARP = BB6 = A4_SHARP * 4
 B6 = B4 * 4
 
+# Octave 7 (three octaves higher)
+C7 = C4 * 8
+C7_SHARP = DB7 = C4_SHARP * 8
+D7 = D4 * 8
+D7_SHARP = EB7 = D4_SHARP * 8
+E7 = E4 * 8
+F7 = F4 * 8
+F7_SHARP = GB7 = F4_SHARP * 8
+G7 = G4 * 8
+G7_SHARP = AB7 = G4_SHARP * 8
+A7 = A4 * 8
+A7_SHARP = BB7 = A4_SHARP * 8
+B7 = B4 * 8
+
 __all__ = [
     'RATE', 'BPM',
+    # Octave 1
+    'C1', 'C1_SHARP', 'DB1',
+    'D1', 'D1_SHARP', 'EB1',
+    'E1',
+    'F1', 'F1_SHARP', 'GB1',
+    'G1', 'G1_SHARP', 'AB1',
+    'A1', 'A1_SHARP', 'BB1',
+    'B1',
     # Octave 2
     'C2', 'C2_SHARP', 'DB2',
     'D2', 'D2_SHARP', 'EB2',
@@ -113,4 +149,12 @@ __all__ = [
     'G6', 'G6_SHARP', 'AB6',
     'A6', 'A6_SHARP', 'BB6',
     'B6',
+    # Octave 7
+    'C7', 'C7_SHARP', 'DB7',
+    'D7', 'D7_SHARP', 'EB7',
+    'E7',
+    'F7', 'F7_SHARP', 'GB7',
+    'G7', 'G7_SHARP', 'AB7',
+    'A7', 'A7_SHARP', 'BB7',
+    'B7',
 ]
