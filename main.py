@@ -11,12 +11,30 @@ from library.keys import get_keys
 
 import numpy as np
 
-a_minor = get_keys('Am', 4)
-a = note(a_minor[0], .5, s_saww)
-b = note(a_minor[1], .5, s_saww)
+# Get A major scale
+a_major = get_keys('A', 4)
+a_major_octave_5 = get_keys('A', 5)
 
-rest = np.zeros(d2s(.5))
-x = np.concatenate((rest, a, a, a, a, a, a, rest, b, b, b, a, a, a, a, rest))
+# Main melody pattern
+n1 = note(a_major[3], 0.5, s_saww)
+n1_long = note(a_major[3], 1.0, s_saww)
+n2 = note(a_major[4], 0.5, s_saww)
+n2_long = note(a_major[4], 1.0, s_saww)
+n3 = note(a_major[5], 0.5, s_saww)
+n4 = note(a_major[6], 0.5, s_saww)
+n5 = note(a_major[7], 0.5, s_saww)
+n6 = note(a_major_octave_5[1], 0.5, s_saww)
+n7 = note(a_major_octave_5[2], 0.5, s_saww)
 
-play(x)
-write_wav(x, 'beat')
+short_rest = np.zeros(d2s(0.25))
+long_rest = np.zeros(d2s(0.5))
+
+theme = np.concatenate((
+    n1, n3, n4, n5, n4, n3, n2_long,
+    long_rest,
+    n2, n3, n4, n5, n4, n3, n1_long,
+    long_rest
+))
+
+play(theme)
+write_wav(theme, 'mia_sebastian_theme')
