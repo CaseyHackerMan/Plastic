@@ -1,6 +1,6 @@
 from library.waves import (
     s_saww, s_white,
-    fade_in_lin, fade_out_lin, d2s, hihat, kick
+    fade_in_lin, fade_out_lin, d2s
 )
 from library.utils import (
     write_wav, play
