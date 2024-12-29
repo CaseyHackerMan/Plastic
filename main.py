@@ -1,24 +1,40 @@
-from basics import *
-s = Samples
+from library.waves import (
+    s_saww, s_white,
+    fade_in_lin, fade_out_lin, d2s
+)
+from library.utils import (
+    write_wav, play
+)
+from library.constants import *
+from library.notes import note, rest
+from library.keys import get_keys
 
-def scree(freq, dur):
-    return fade_in_lin(fade_out_lin(s.saww(freq,dur),.25),0.1)
+import numpy as np
 
-major = [0,2,4,5,7,9,11,12]
-minor = [0,2,3,5,7,8,10,12]
+# Get A major scale
+a_major = get_keys('A', 4)
+a_major_octave_5 = get_keys('A', 5)
 
-a = (13, 1/2)
-b = (14, 1/2)
-rest = (None,1/2)
-x = line((rest,a,a,a,a,a,a,rest,b,b,b,a,a,a,a,rest),scree)
-y = line(((-36,1/2),(None,1/2))*8,s.drum)
-write_wav((x+y)/2,'classic')
+# Main melody pattern
+n1 = note(a_major[3], 0.5, s_saww)
+n1_long = note(a_major[3], 1.0, s_saww)
+n2 = note(a_major[4], 0.5, s_saww)
+n2_long = note(a_major[4], 1.0, s_saww)
+n3 = note(a_major[5], 0.5, s_saww)
+n4 = note(a_major[6], 0.5, s_saww)
+n5 = note(a_major[7], 0.5, s_saww)
+n6 = note(a_major_octave_5[1], 0.5, s_saww)
+n7 = note(a_major_octave_5[2], 0.5, s_saww)
 
-write_wav(fade_in_lin(fade_out_lin(s.white(None,10),4),4),'ocean')
+short_rest = np.zeros(d2s(0.25))
+long_rest = np.zeros(d2s(0.5))
 
-def zap(freq, dur):
-    voice = [1]*20
-    return sum(voice[i]*s.sine(freq*(i+1), dur) for i in range(len(voice)))/sum(voice)
+theme = np.concatenate((
+    n1, n3, n4, n5, n4, n3, n2_long,
+    long_rest,
+    n2, n3, n4, n5, n4, n3, n1_long,
+    long_rest
+))
 
-write_wav(np.concatenate([fade_out_lin(zap(note(n), 1/4),1/16) for n in major]),'major')
-write_wav(np.concatenate([fade_out_lin(zap(note(n), 1/4),1/16) for n in minor]),'minor')
+play(theme)
+write_wav(theme, 'mia_sebastian_theme')
